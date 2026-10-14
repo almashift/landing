@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlmaShift | Learn by doing</title>
+  <meta name="description" content="AlmaShift is an online academy. Short, focused lessons from expert trainers, with practice built into every course, so what you learn really sticks.">
+  <link rel="canonical" href="https://www.almashift.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AlmaShift">
+  <meta property="og:title" content="AlmaShift | Learn by doing">
+  <meta property="og:description" content="Short lessons from expert trainers, with practice built into every course.">
+  <meta property="og:url" content="https://www.almashift.com/">
+  <meta name="twitter:card" content="summary">
+  <style>
+    /* Indigo theme: colours plus a little "style" (corner radius, heading font) */
+    :root {
+      --bg: #ffffff; --bg-alt: #f8fafc; --text: #0f172a; --muted: #475569; --border: #e2e8f0;
+      --brand: #4f46e5; --brand-strong: #4338ca; --brand-soft: #eef2ff; --on-brand: #ffffff;
+      --accent: #ec4899;
+      --radius: 14px; --btn-radius: 999px;
+      --font-head: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --head-tracking: -0.03em;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120; --bg-alt: #111827; --text: #f1f5f9; --muted: #94a3b8; --border: #1e293b;
+        --brand: #818cf8; --brand-strong: #a5b4fc; --brand-soft: #1e1b4b; --on-brand: #0b1120;
+      }
+    }
+    :root { --max: 1040px; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    section { scroll-margin-top: 64px; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      transition: background-color .4s ease, color .4s ease;
+    }
+    h1, h2, h3, .wordmark { font-family: var(--font-head); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Sticky header that gains a shadow once you scroll */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    header.scrolled { border-color: var(--border); box-shadow: 0 6px 24px -12px rgba(15, 23, 42, .25); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+    .logo svg { flex: none; transition: transform .4s cubic-bezier(.34, 1.56, .64, 1); }
+    .logo:hover svg { transform: rotate(-8deg) scale(1.08); }
+    .logo .mark-bg { fill: var(--brand); }
+    .logo .mark-a { stroke: var(--on-brand); }
+    .logo .mark-arrow { stroke: color-mix(in srgb, var(--on-brand) 70%, var(--brand)); }
+    .wordmark span { color: var(--brand); }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .tagline { font-size: .72rem; font-weight: 500; letter-spacing: .01em; color: var(--muted); white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links .link { position: relative; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .nav-links .link::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px;
+      background: var(--brand); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    }
+    .nav-links .link:hover { color: var(--text); }
+    .nav-links .link:hover::after { transform: scaleX(1); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 12px 22px; border-radius: var(--btn-radius);
+      font-weight: 600; text-decoration: none;
+      background: var(--brand); color: var(--on-brand);
+      box-shadow: 0 6px 20px -8px color-mix(in srgb, var(--brand) 70%, transparent);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover {
+      background: var(--brand-strong); transform: translateY(-2px);
+      box-shadow: 0 12px 28px -10px color-mix(in srgb, var(--brand) 80%, transparent);
+    }
+    .btn .arrow { display: inline-block; transition: transform .2s ease; }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .nav .btn { padding: 9px 18px; }
+
+    /* Hero with slowly drifting colour glows */
+    .hero { position: relative; isolation: isolate; overflow: hidden; padding: 104px 0 88px; text-align: center; }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(70px); opacity: .55;
+    }
+    .hero::before {
+      width: 420px; height: 420px; top: -120px; left: 8%;
+      background: color-mix(in srgb, var(--brand) 45%, transparent);
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      width: 360px; height: 360px; bottom: -140px; right: 6%;
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      animation: drift 20s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(60px, 40px) scale(1.15); }
+    }
+    .eyebrow { display: inline-block; padding: 6px 12px; border-radius: var(--btn-radius); background: var(--brand-soft); color: var(--brand); font-weight: 600; font-size: .85rem; }
+    h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); line-height: 1.1; letter-spacing: var(--head-tracking); margin: 18px 0; }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 36rem; margin: 0 auto 32px; }
+
+    /* Hero entrance, staggered */
+    .hero .wrap > * { opacity: 0; transform: translateY(16px); animation: rise .7s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .hero .wrap > :nth-child(2) { animation-delay: .1s; }
+    .hero .wrap > :nth-child(3) { animation-delay: .2s; }
+    .hero .wrap > :nth-child(4) { animation-delay: .3s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    section { padding: 72px 0; }
+    .alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    h2 { font-size: clamp(1.7rem, 3.4vw, 2.2rem); letter-spacing: var(--head-tracking); margin: 0 0 36px; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px); border-color: color-mix(in srgb, var(--brand) 40%, var(--border));
+      box-shadow: 0 16px 36px -18px rgba(15, 23, 42, .35);
+    }
+    .num {
+      width: 34px; height: 34px; border-radius: calc(var(--radius) * .7); display: grid; place-items: center;
+      background: var(--brand-soft); color: var(--brand); font-weight: 800; margin-bottom: 12px;
+      transition: background .25s, color .25s, transform .25s;
+    }
+    .card:hover .num { background: var(--brand); color: var(--on-brand); transform: scale(1.08); }
+
+    /* Scroll reveal: elements fade up as they enter the viewport */
+    /* Uses `translate` so it never fights the cards' hover `transform` */
+    .reveal { opacity: 0; translate: 0 24px; transition: opacity .7s ease, translate .7s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.in { opacity: 1; translate: 0 0; }
+    .card.reveal {
+      transition: opacity .7s ease, translate .7s cubic-bezier(.2, .7, .2, 1),
+                  transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .cta { text-align: center; }
+    .cta p { color: var(--muted); margin: -20px auto 28px; max-width: 32rem; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+    .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+    .foot a { color: var(--muted); }
+
+
+    /* Respect users who turn off animations */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .hero .wrap > *, .reveal { opacity: 1; transform: none; translate: none; }
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 56px; }
+      section { padding: 56px 0; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .nav-links .link { display: none; }
+      .tagline { font-size: .66rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="AlmaShift home">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <rect class="mark-bg" width="64" height="64" rx="16"/>
+        <path class="mark-a" d="M16 44 L28 20 L40 44" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="mark-arrow" d="M36 30 H50 M44 24 L50 30 L44 36" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="wordmark">Alma<span>Shift</span></span>
+        <span class="tagline">Your alma mater for every shift</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="#how">How it works</a>
+      <a class="link" href="#why">Why AlmaShift</a>
+      <a class="btn" href="https://learn.almashift.com/lms">Start learning</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Learn from expert trainers</span>
+      <h1>Shift your future.<br><em>Learn by doing.</em></h1>
+      <p class="lead">Short, focused lessons from experienced trainers, with practice built into every course, so what you learn really sticks.</p>
+      <a class="btn" href="https://learn.almashift.com/lms">Browse courses <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <h2 class="reveal">How it works</h2>
+      <div class="grid">
+        <div class="card reveal">
+          <div class="num">1</div>
+          <h3>Learn the concept</h3>
+          <p>Bite-sized video lessons that make each topic clear before you move on.</p>
+        </div>
+        <div class="card reveal">
+          <div class="num">2</div>
+          <h3>Practise what you learn</h3>
+          <p>Quizzes, assignments and hands-on exercises reinforce every lesson.</p>
+        </div>
+        <div class="card reveal">
+          <div class="num">3</div>
+          <h3>Track your progress</h3>
+          <p>See how far you've come and earn a certificate when you complete a course.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <h2 class="reveal">Why AlmaShift</h2>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>Experienced trainers</h3>
+          <p>Learn from educators and professionals who know their subject inside out.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Practice over theory</h3>
+          <p>Every course is built around doing, not just watching.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Learn your way</h3>
+          <p>Study at your own pace on any device, with courses in English, Hindi, Malayalam and other Indian languages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt cta">
+    <div class="wrap">
+      <h2 class="reveal">Ready to make the shift?</h2>
+      <p class="reveal">Pick a course and start learning the way that works best: by doing.</p>
+      <a class="btn" href="https://learn.almashift.com/lms">Start learning <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 AlmaShift</span>
+    <a href="mailto:support@almashift.com">support@almashift.com</a>
+  </div>
+</footer>
+
+<script>
+  // Header shadow after scrolling a little
+  const header = document.querySelector('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Fade elements up as they enter the viewport; cards in a row are staggered
+  document.querySelectorAll('.grid').forEach(grid =>
+    [...grid.children].forEach((el, i) => (el.style.transitionDelay = `${i * 0.1}s`)));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.add('in');
+      io.unobserve(el);
+      // Drop the stagger once revealed so hover effects respond instantly
+      el.addEventListener('transitionend', () => (el.style.transitionDelay = ''), { once: true });
+    }), { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+</script>
+</body>
+</html>
