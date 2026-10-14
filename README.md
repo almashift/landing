@@ -1,4 +1,4 @@
-# almashift-landing
+# landing
 
 Marketing landing page for **www.almashift.com**. The LMS itself lives on
 Frappe Cloud at **learn.almashift.com**; this repo is only the static front door.
