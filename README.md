@@ -33,7 +33,10 @@ then set **Custom domain** to `www.almashift.com` and tick **Enforce HTTPS** onc
 
 | Type  | Host    | Value                            | Serves                     |
 |-------|---------|----------------------------------|----------------------------|
-| ALIAS | `@`     | `almashift.github.io.`           | apex, redirects to www     |
+| A     | `@`     | `185.199.108.153`                | apex, redirects to www     |
+| A     | `@`     | `185.199.109.153`                | apex, redirects to www     |
+| A     | `@`     | `185.199.110.153`                | apex, redirects to www     |
+| A     | `@`     | `185.199.111.153`                | apex, redirects to www     |
 | CNAME | `www`   | `almashift.github.io.`           | this landing page          |
 | CNAME | `learn` | `lms-nng-vdz.nvi.frappe.cloud.`  | Frappe Learning (LMS)      |
 
