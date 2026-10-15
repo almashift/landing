@@ -7,9 +7,10 @@ Frappe Cloud at **learn.almashift.com**; this repo is only the static front door
 site/
   index.html    landing page (HTML + inline CSS, no build step)
   404.html      not-found page
-  terms.html, privacy.html, refund.html, contact.html
+  terms.html, privacy.html, refund.html, shipping.html, contact.html
                 policy pages (needed for Razorpay review), styled by legal.css;
                 placeholders still to fill are marked class="todo"
+  theme.js      light/dark toggle (the saved choice is applied by a one-line script in each <head>)
   favicon.svg   logo mark
   og-image.png  1200x630 link-preview image (copy of brand/og-image.png)
   CNAME         custom domain for GitHub Pages (www.almashift.com)

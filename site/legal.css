@@ -2,35 +2,58 @@
    Same indigo theme tokens as index.html, minus the landing-page animations. */
 :root {
   --bg: #ffffff; --bg-alt: #f8fafc; --text: #0f172a; --muted: #475569; --border: #e2e8f0;
-  --brand: #4f46e5; --brand-soft: #eef2ff; --on-brand: #ffffff;
+  --brand: #4f46e5; --brand-soft: #eef2ff; --on-brand: #ffffff; --accent: #ec4899;
+  --glow: 30%;
   --max: 760px;
 }
+/* Dark theme: follows the device setting unless the visitor picked a theme with the toggle */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0b1120; --bg-alt: #111827; --text: #f1f5f9; --muted: #94a3b8; --border: #1e293b;
     --brand: #818cf8; --brand-soft: #1e1b4b; --on-brand: #0b1120;
+    --glow: 30%;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1120; --bg-alt: #111827; --text: #f1f5f9; --muted: #94a3b8; --border: #1e293b;
+  --brand: #818cf8; --brand-soft: #1e1b4b; --on-brand: #0b1120;
+  --glow: 30%;
 }
 
 * { box-sizing: border-box; }
 body {
-  margin: 0;
+  margin: 0; min-height: 100vh;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg); color: var(--text); line-height: 1.7;
+  color: var(--text); line-height: 1.7;
+  /* Soft indigo glow top-right and pink bottom-left, as on the landing hero and preview image */
+  background:
+    radial-gradient(1100px 700px at 100% 0%, color-mix(in srgb, var(--brand) var(--glow), transparent), transparent 70%),
+    radial-gradient(1000px 650px at 0% 100%, color-mix(in srgb, var(--accent) calc(var(--glow) * .7), transparent), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
 }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+/* Header and footer span the same width as on the landing page; only the text column is narrower */
+header .wrap, footer .wrap { max-width: 1040px; }
 
-header { border-bottom: 1px solid var(--border); }
+header {
+  position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
 .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; }
 .logo .mark-bg { fill: var(--brand); }
 .logo .mark-a { stroke: var(--on-brand); }
 .logo .mark-arrow { stroke: color-mix(in srgb, var(--on-brand) 70%, var(--brand)); }
 .logo span span { color: var(--brand); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
 .nav a.back { color: var(--muted); text-decoration: none; font-weight: 500; }
 .nav a.back:hover { color: var(--brand); }
 
-main { padding: 40px 0 56px; }
+/* Column layout so the footer sits at the bottom of the window on short pages */
+body { display: flex; flex-direction: column; }
+main.wrap { flex: 1; width: 100%; padding-top: 40px; padding-bottom: 56px; }
 h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 6px; }
 .updated { color: var(--muted); margin: 0 0 32px; font-size: .95rem; }
 h2 { font-size: 1.2rem; margin: 36px 0 8px; }
@@ -39,14 +62,57 @@ ul { padding-left: 1.3rem; }
 li { margin: 4px 0; }
 a { color: var(--brand); }
 .note { background: var(--brand-soft); border-radius: 12px; padding: 14px 18px; margin: 24px 0; }
-.card { border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin: 16px 0; background: var(--bg-alt); }
+.card {
+  border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin: 16px 0;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  box-shadow: 0 12px 32px -20px rgba(15, 23, 42, .25);
+}
 .card h2 { margin-top: 0; }
+
+/* Contact page: wider layout, About on the left, details card on the right; stacks on phones */
+body.wide { --max: 980px; }
+.contact-cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+.contact-cols h2 { margin-top: 0; }
+.contact-cols > section { padding-top: 25px; } /* line its heading up with the card's */
+.contact-cols .card { margin: 0; padding: 24px 26px; }
+dl.contact { margin: 0; }
+dl.contact dt { font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dl.contact dd { margin: 2px 0 16px; }
+dl.contact dd:last-child { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .contact-cols { grid-template-columns: 1fr; gap: 24px; }
+  .contact-cols > section { padding-top: 0; }
+}
 
 /* Placeholders still to be filled in before launch; search the source for class="todo" */
 mark.todo { background: #fde68a; color: #78350f; border-radius: 4px; padding: 0 4px; }
 
-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--muted); font-size: .9rem; }
-.foot { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-.foot nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
-.foot a { color: var(--muted); }
-.foot a:hover { color: var(--brand); }
+/* Footer uses the button colours (brand background, on-brand text) in both themes */
+footer { background: var(--brand); padding: 16px 0; color: var(--on-brand); font-size: .9rem; }
+/* Same markup and look as the landing page footer */
+.foot { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
+.foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; }
+.foot a { color: var(--on-brand); text-decoration: none; }
+.foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.social { display: inline-flex; transition: transform .2s ease; }
+.social:hover { transform: translateY(-2px); }
+.social svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* Light/dark toggle: indigo moon in light mode; a glowing amber sun in dark mode so the
+   way back to light is easy to spot */
+.theme-toggle {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex: none; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--brand) 35%, transparent);
+  background: var(--brand-soft); color: var(--brand);
+  transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, transform .3s;
+}
+.theme-toggle:hover { border-color: var(--brand); transform: rotate(-15deg); }
+.theme-toggle[data-current="dark"] {
+  color: #fbbf24; background: rgba(251, 191, 36, .14); border-color: rgba(251, 191, 36, .55);
+  box-shadow: 0 0 16px -2px rgba(251, 191, 36, .55);
+}
+.theme-toggle[data-current="dark"]:hover { background: rgba(251, 191, 36, .24); border-color: #fbbf24; }
+.theme-toggle:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-sun, .theme-toggle[data-current="dark"] .icon-moon { display: none; }
+.theme-toggle[data-current="dark"] .icon-sun { display: block; }
