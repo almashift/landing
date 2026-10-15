@@ -164,8 +164,12 @@
     .cta p { color: var(--muted); margin: -20px auto 28px; max-width: 32rem; }
 
     footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
-    .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+    .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
     .foot a { color: var(--muted); }
+    .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .social { display: inline-flex; transition: color .2s ease, transform .2s ease; }
+    .social:hover { color: var(--brand); transform: translateY(-2px); }
+    .social svg { width: 20px; height: 20px; fill: currentColor; }
 
 
     /* Respect users who turn off animations */
@@ -275,7 +279,15 @@
 <footer>
   <div class="wrap foot">
     <span>&copy; 2026 AlmaShift</span>
-    <a href="mailto:support@almashift.com">support@almashift.com</a>
+    <div class="foot-links">
+      <a href="mailto:support@almashift.com">support@almashift.com</a>
+      <a class="social" href="https://www.youtube.com/@almashift" aria-label="AlmaShift on YouTube" rel="me noopener" target="_blank">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.87.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+      </a>
+      <a class="social" href="https://x.com/almashift" aria-label="AlmaShift on X" rel="me noopener" target="_blank">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93zM17.61 20.64h2.04L6.49 3.24H4.3z"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 

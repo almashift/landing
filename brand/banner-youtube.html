@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- YouTube channel banner, 2560x1440. Only the centre 1546x423 is visible on every device,
+     so all text sits inside .safe. Render: chrome --headless=new --screenshot --window-size=2560,1440 -->
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 2560px; height: 1440px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif; color: #0f172a;
+    background:
+      radial-gradient(1100px 700px at 85% 20%, #e0e7ff 0%, transparent 70%),
+      radial-gradient(1000px 650px at 15% 85%, #fce7f3 0%, transparent 70%),
+      #ffffff;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .safe { width: 1546px; height: 423px; display: flex; align-items: center; gap: 56px; box-sizing: border-box; padding: 0 40px; }
+  .text { display: flex; flex-direction: column; gap: 14px; }
+  h1 { margin: 0; white-space: nowrap; font-size: 88px; line-height: 1; letter-spacing: -3px; font-weight: 800; }
+  h1 em {
+    font-style: normal; color: transparent;
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  p { margin: 0; font-size: 40px; color: #475569; }
+  p b { color: #4f46e5; }
+</style></head>
+<body>
+  <div class="safe">
+    <svg width="200" height="200" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#4f46e5"/>
+      <path d="M16 44 L28 20 L40 44" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M36 30 H50 M44 24 L50 30 L44 36" fill="none" stroke="#c7d2fe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="text">
+      <h1>Alma<span style="color:#4f46e5">Shift</span> · <em>Learn by doing.</em></h1>
+      <p>Expert trainers. Practice in every course. <b>almashift.com</b></p>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- X (Twitter) header, 1500x500.
+     The profile picture covers the bottom-left corner and mobile crops top and bottom, so text sits on the right.
+     Render: chrome --headless=new --screenshot --window-size=1500,500 --force-device-scale-factor=1 -->
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1500px; height: 500px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif; color: #0f172a;
+    background:
+      radial-gradient(800px 450px at 95% 0%, #e0e7ff 0%, transparent 70%),
+      radial-gradient(700px 400px at 5% 100%, #fce7f3 0%, transparent 70%),
+      #ffffff;
+    display: flex; align-items: center; justify-content: flex-end;
+    box-sizing: border-box; padding: 0 90px;
+  }
+  .text { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+  h1 { margin: 0; white-space: nowrap; font-size: 72px; line-height: 1; letter-spacing: -2px; font-weight: 800; }
+  h1 em {
+    font-style: normal; color: transparent;
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  p { margin: 0; font-size: 30px; color: #475569; }
+  p b { color: #4f46e5; }
+</style></head>
+<body>
+  <div class="text">
+    <h1>Shift your future. <em>Learn by doing.</em></h1>
+    <p>Expert trainers. Practice in every course. <b>almashift.com</b></p>
+  </div>
+</body></html>
