@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif; color: #0f172a;
+    background:
+      radial-gradient(600px 400px at 100% 0%, #e0e7ff 0%, transparent 70%),
+      radial-gradient(500px 360px at 0% 100%, #fce7f3 0%, transparent 70%),
+      #ffffff;
+    box-sizing: border-box; padding: 72px 88px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 22px; font-size: 46px; font-weight: 800; letter-spacing: -0.5px; }
+  .brand span { color: #4f46e5; }
+  h1 { margin: 0; font-size: 96px; line-height: 1.05; letter-spacing: -3px; font-weight: 800; }
+  h1 em {
+    font-style: normal; color: transparent;
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .foot { display: flex; justify-content: space-between; align-items: center; font-size: 30px; color: #475569; }
+  .url { font-weight: 700; color: #4f46e5; }
+</style></head>
+<body>
+  <div class="brand">
+    <svg width="84" height="84" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#4f46e5"/>
+      <path d="M16 44 L28 20 L40 44" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M36 30 H50 M44 24 L50 30 L44 36" fill="none" stroke="#c7d2fe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>Alma<span>Shift</span></div>
+  </div>
+  <h1>Shift your future.<br><em>Learn by doing.</em></h1>
+  <div class="foot">
+    <div>Expert trainers. Practice in every course.</div>
+    <div class="url">almashift.com</div>
+  </div>
+</body></html>

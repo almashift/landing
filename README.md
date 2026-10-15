@@ -8,8 +8,11 @@ site/
   index.html    landing page (HTML + inline CSS, no build step)
   404.html      not-found page
   favicon.svg   logo mark
+  og-image.png  1200x630 link-preview image (copy of brand/og-image.png)
   CNAME         custom domain for GitHub Pages (www.almashift.com)
   robots.txt, sitemap.xml
+brand/          logo mark + wordmark (SVG), mark PNGs (32/180/512), og-image.png
+                og-image.html is the source: re-render with headless Chrome at 1200x630
 .github/workflows/pages.yml   deploys site/ to GitHub Pages on push to main
 ```
 
