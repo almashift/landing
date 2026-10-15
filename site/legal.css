@@ -1,0 +1,52 @@
+/* Shared styles for the policy and contact pages (terms, privacy, refund, contact).
+   Same indigo theme tokens as index.html, minus the landing-page animations. */
+:root {
+  --bg: #ffffff; --bg-alt: #f8fafc; --text: #0f172a; --muted: #475569; --border: #e2e8f0;
+  --brand: #4f46e5; --brand-soft: #eef2ff; --on-brand: #ffffff;
+  --max: 760px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120; --bg-alt: #111827; --text: #f1f5f9; --muted: #94a3b8; --border: #1e293b;
+    --brand: #818cf8; --brand-soft: #1e1b4b; --on-brand: #0b1120;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+header { border-bottom: 1px solid var(--border); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+.logo .mark-bg { fill: var(--brand); }
+.logo .mark-a { stroke: var(--on-brand); }
+.logo .mark-arrow { stroke: color-mix(in srgb, var(--on-brand) 70%, var(--brand)); }
+.logo span span { color: var(--brand); }
+.nav a.back { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav a.back:hover { color: var(--brand); }
+
+main { padding: 40px 0 56px; }
+h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 6px; }
+.updated { color: var(--muted); margin: 0 0 32px; font-size: .95rem; }
+h2 { font-size: 1.2rem; margin: 36px 0 8px; }
+p, li { color: var(--text); }
+ul { padding-left: 1.3rem; }
+li { margin: 4px 0; }
+a { color: var(--brand); }
+.note { background: var(--brand-soft); border-radius: 12px; padding: 14px 18px; margin: 24px 0; }
+.card { border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin: 16px 0; background: var(--bg-alt); }
+.card h2 { margin-top: 0; }
+
+/* Placeholders still to be filled in before launch; search the source for class="todo" */
+mark.todo { background: #fde68a; color: #78350f; border-radius: 4px; padding: 0 4px; }
+
+footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--muted); font-size: .9rem; }
+.foot { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.foot a { color: var(--muted); }
+.foot a:hover { color: var(--brand); }

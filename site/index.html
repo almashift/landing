@@ -166,7 +166,7 @@
     footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
     .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
     .foot a { color: var(--muted); }
-    .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; }
     .social { display: inline-flex; transition: color .2s ease, transform .2s ease; }
     .social:hover { color: var(--brand); transform: translateY(-2px); }
     .social svg { width: 20px; height: 20px; fill: currentColor; }
@@ -278,7 +278,13 @@
 
 <footer>
   <div class="wrap foot">
-    <span>&copy; 2026 AlmaShift</span>
+    <div class="foot-links">
+      <span>&copy; 2026 AlmaShift</span>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+    </div>
     <div class="foot-links">
       <a href="mailto:support@almashift.com">support@almashift.com</a>
       <a class="social" href="https://www.youtube.com/@almashift" aria-label="AlmaShift on YouTube" rel="me noopener" target="_blank">
