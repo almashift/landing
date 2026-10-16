@@ -195,6 +195,18 @@
     .course-meta { margin-top: auto; padding-top: 16px; color: var(--brand); font-size: .88rem; font-weight: 600; }
     .course-meta .arrow { display: inline-block; transition: transform .25s; }
     a.card:hover .course-meta .arrow { transform: translateX(4px); }
+    /* Free course: brand border, soft indigo wash and a filled call-to-action so it stands out */
+    .card.featured {
+      border: 2px solid var(--brand); padding: 25px;
+      background: linear-gradient(160deg, var(--brand-soft) 0%, var(--bg) 70%);
+      box-shadow: 0 14px 34px -20px color-mix(in srgb, var(--brand) 70%, transparent);
+    }
+    .card.featured:hover { border-color: var(--brand); box-shadow: 0 18px 40px -16px color-mix(in srgb, var(--brand) 75%, transparent); }
+    .card.featured .course-meta {
+      align-self: flex-start; margin-top: auto; padding: 7px 16px; border-radius: var(--btn-radius);
+      background: var(--brand); color: var(--on-brand);
+    }
+    .card.featured p { margin-bottom: 16px; }
 
     .cta { text-align: center; }
     .cta p { color: var(--muted); margin: -20px auto 28px; max-width: 32rem; }
@@ -295,32 +307,44 @@
   <section id="courses" aria-roledescription="carousel" aria-label="Courses">
     <div class="wrap">
       <h2 class="reveal">Our courses</h2>
-      <p class="section-sub reveal">Practical, lab-first courses from expert trainers. Istio &amp; Service Mesh opens first.</p>
+      <p class="section-sub reveal">Practical, lab-first courses from expert trainers. Start free with Istio Fundamentals.</p>
       <div class="carousel reveal">
         <div class="track" tabindex="0" aria-label="Course list, scroll sideways for more">
+          <a class="card featured" href="https://learn.almashift.com/lms/courses/istio-fundamentals">
+            <span class="badge first">Free</span>
+            <h3>Istio Fundamentals</h3>
+            <p>Every area of Istio, from installation to troubleshooting, with graded labs. No cloud account needed.</p>
+            <span class="course-meta">Start free <span class="arrow">&rarr;</span></span>
+          </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
-            <span class="badge first">Early access</span>
-            <h3>Istio &amp; Service Mesh</h3>
-            <p>Traffic management, security and observability with Istio, with labs that prepare you for the ICA exam.</p>
-            <span class="course-meta">Hands-on labs <span class="arrow">&rarr;</span></span>
+            <span class="badge">Early access</span>
+            <h3>Istio for ICA Exam</h3>
+            <p>Take a real microservices store to production: deep traffic management, zero-trust security, upgrades and a timed mock exam.</p>
+            <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
           </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
             <span class="badge">Kubernetes</span>
             <h3>Kubernetes Fundamentals</h3>
             <p>Pods, deployments, services and networking, practised on a real cluster from your browser.</p>
-            <span class="course-meta">Hands-on labs <span class="arrow">&rarr;</span></span>
+            <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
           </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
             <span class="badge">DevOps</span>
             <h3>DevOps &amp; CI/CD Pipelines</h3>
             <p>Build, test and ship automatically with CI/CD pipelines and GitOps workflows.</p>
-            <span class="course-meta">Hands-on labs <span class="arrow">&rarr;</span></span>
+            <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
           </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
-            <span class="badge">Cloud</span>
-            <h3>Cloud on AWS &amp; GCP</h3>
-            <p>Core cloud services, identity, networking and cost basics, practised step by step in guided labs.</p>
-            <span class="course-meta">Hands-on labs <span class="arrow">&rarr;</span></span>
+            <span class="badge">AWS</span>
+            <h3>Cloud Security on AWS</h3>
+            <p>IAM, network security, encryption and threat detection on AWS, practised step by step in guided labs.</p>
+            <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
+          </a>
+          <a class="card" href="https://learn.almashift.com/lms/courses">
+            <span class="badge">GCP</span>
+            <h3>Cloud Security on GCP</h3>
+            <p>IAM, VPC security, encryption and security monitoring on Google Cloud, practised step by step in guided labs.</p>
+            <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
           </a>
         </div>
         <div class="carousel-nav">
