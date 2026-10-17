@@ -20,6 +20,45 @@
   <meta property="og:image:alt" content="AlmaShift: Shift your future. Learn by doing.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.almashift.com/og-image.png">
+  <!-- Structured data: who AlmaShift is, for search engines and AI answers (knowledge panel, site name) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://www.almashift.com/#organization",
+        "name": "AlmaShift",
+        "url": "https://www.almashift.com/",
+        "logo": "https://www.almashift.com/img/logo-512.png",
+        "description": "AlmaShift is an online academy. Short, focused lessons from expert trainers, with practice built into every course, so what you learn really sticks.",
+        "email": "support@almashift.com",
+        "sameAs": [
+          "https://www.youtube.com/@almashift",
+          "https://x.com/almashift",
+          "https://github.com/almashift"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.almashift.com/#website",
+        "name": "AlmaShift",
+        "url": "https://www.almashift.com/",
+        "publisher": { "@id": "https://www.almashift.com/#organization" }
+      },
+      {
+        "@type": "Course",
+        "name": "Istio Fundamentals",
+        "description": "Every area of Istio, from installation to troubleshooting, with graded labs. No cloud account needed.",
+        "url": "https://learn.almashift.com/lms/courses/istio-fundamentals",
+        "provider": { "@id": "https://www.almashift.com/#organization" },
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR", "category": "Free" },
+        "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT3H" }
+      }
+    ]
+  }
+  </script>
   <style>
     /* Indigo theme: colours plus a little "style" (corner radius, heading font) */
     :root {
