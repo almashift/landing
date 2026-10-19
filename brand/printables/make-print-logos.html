@@ -1,0 +1,102 @@
+<!doctype html>
+<!-- Builds the print logos (text converted to outlines) from the same geometry as
+     ../logo-wordmark.svg. The wordmark font is Segoe UI Black (system-ui at weight 800 on Windows).
+     Render: chrome --headless=new --allow-file-access-from-files --virtual-time-budget=15000 --dump-dom make-print-logos.html
+     Each variant is written into a <script type="image/svg+xml" id="..."> element. -->
+<html><head><meta charset="utf-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/1.3.4/opentype.min.js"></script>
+</head><body>
+<script>
+const FONT = "file:///C:/Windows/Fonts/seguibl.ttf";
+const INDIGO = "#4f46e5", NAVY = "#0f172a", LIGHT = "#c7d2fe";
+const CHEVRON = "M16 44 L28 20 L40 44", ARROW = "M36 30 H50 M44 24 L50 30 L44 36";
+const LINE = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
+
+const VARIANTS = {
+  "color":         { alma: NAVY,      shift: INDIGO },
+  "color-on-dark": { alma: "#ffffff", shift: "#a5b4fc" },
+  "black":         { ink: "#000000" },
+  "white":         { ink: "#ffffff" },
+  "indigo":        { ink: INDIGO },
+};
+
+const r = n => Math.round(n * 1000) / 1000;
+
+// "Alma" + "Shift" as outlined paths, kerned, with the wordmark's -0.5 letter spacing.
+function words(font, x, y, size) {
+  const scale = size / font.unitsPerEm, out = [];
+  let cx = x, box = { x1: Infinity, y1: Infinity, x2: -Infinity, y2: -Infinity };
+  const glyphs = font.stringToGlyphs("AlmaShift");
+  glyphs.forEach((g, i) => {
+    const p = g.getPath(cx, y, size), b = p.getBoundingBox();
+    out.push(p.toPathData(3));
+    box = { x1: Math.min(box.x1, b.x1), y1: Math.min(box.y1, b.y1), x2: Math.max(box.x2, b.x2), y2: Math.max(box.y2, b.y2) };
+    cx += g.advanceWidth * scale - 0.5;
+    if (i < glyphs.length - 1) cx += font.getKerningValue(g, glyphs[i + 1]) * scale;
+  });
+  return { alma: out.slice(0, 4).join(""), shift: out.slice(4).join(""), box };
+}
+
+function mark(v, id, x, y) {
+  if (!v.ink) return `<g transform="translate(${r(x)} ${r(y)})">` +
+    `<rect width="64" height="64" rx="16" fill="${INDIGO}"/>` +
+    `<path d="${CHEVRON}" ${LINE} stroke="#fff" stroke-width="6"/>` +
+    `<path d="${ARROW}" ${LINE} stroke="${LIGHT}" stroke-width="5"/></g>`;
+  // One ink: the lines are cut out of the square, so the shirt or mug shows through.
+  // A mask would be rasterised in PDF, so the cut-out is real geometry: SQUARE plus CUTOUT,
+  // the outline of the chevron (width 6) and arrow (width 5) strokes with round caps and joins.
+  return `<path transform="translate(${r(x)} ${r(y)})" fill="${v.ink}" fill-rule="evenodd" d="${SQUARE} ${CUTOUT}"/>`;
+}
+
+const SQUARE = "M16 0H48A16 16 0 0 1 64 16V48A16 16 0 0 1 48 64H16A16 16 0 0 1 0 48V16A16 16 0 0 1 16 0Z";
+const CUTOUT =
+  "M13.317 42.658L25.317 18.658A3 3 0 0 1 30.683 18.658" +   // chevron, left side up, round apex
+  "L35.174 27.640A2.5 2.5 0 0 1 36 27.5" +                     // right side down to the arrow's tail cap
+  "L43.964 27.5L42.232 25.768A2.5 2.5 0 0 1 45.768 22.232" +   // shaft top, upper arrowhead stroke
+  "L51.768 28.232A2.5 2.5 0 0 1 51.768 31.768" +               // arrow tip
+  "L45.768 37.768A2.5 2.5 0 0 1 42.232 34.232L43.964 32.5" +   // lower arrowhead stroke
+  "L37.604 32.5L42.683 42.658A3 3 0 0 1 37.317 45.342" +       // shaft bottom, chevron right foot
+  "L28 26.708L18.683 45.342A3 3 0 0 1 13.317 42.658Z";         // inner corner, left foot
+
+function svg(id, w, h, widthMm, body) {
+  const hMm = widthMm * h / w;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${r(w)} ${r(h)}" width="${r(widthMm)}mm" height="${r(hMm)}mm">` +
+    `<title>AlmaShift logo (${id})</title>${body}</svg>`;
+}
+
+function emit(id, text, meta) {
+  const s = document.createElement("script");
+  s.type = "image/svg+xml"; s.id = id; s.dataset.meta = JSON.stringify(meta);
+  s.textContent = text;
+  document.body.appendChild(s);
+}
+
+opentype.load(FONT, (err, font) => {
+  if (err) { document.body.dataset.error = String(err); return; }
+  for (const [name, v] of Object.entries(VARIANTS)) {
+    const alma = v.ink || v.alma, shift = v.ink || v.shift;
+
+    // Horizontal: mark at 0,0 (64 units), words at x=78, baseline 43, size 32, as in logo-wordmark.svg.
+    let t = words(font, 78, 43, 32);
+    let w = t.box.x2, h = 64;
+    emit(`horizontal-${name}`, svg(`horizontal-${name}`, w, h, 300,
+      mark(v, `h-${name}`, 0, 0) +
+      `<path fill="${alma}" d="${t.alma}"/><path fill="${shift}" d="${t.shift}"/>`),
+      { w, h, widthMm: 300 });
+
+    // Stacked: mark centred above the words, for chests, sleeves and mug sides.
+    t = words(font, 0, 0, 32);
+    const tw = t.box.x2 - t.box.x1, gap = 14;
+    w = Math.max(tw, 64);
+    const ty = 64 + gap - t.box.y1;           // baseline so the cap tops sit `gap` below the mark
+    t = words(font, (w - tw) / 2 - t.box.x1, ty, 32);
+    h = t.box.y2;
+    emit(`stacked-${name}`, svg(`stacked-${name}`, w, h, 250,
+      mark(v, `s-${name}`, (w - 64) / 2, 0) +
+      `<path fill="${alma}" d="${t.alma}"/><path fill="${shift}" d="${t.shift}"/>`),
+      { w, h, widthMm: 250 });
+  }
+  document.body.dataset.done = "1";
+});
+</script>
+</body></html>

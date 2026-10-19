@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- Contact sheet of the print logos on shirt and mug colours, to check the right file for each.
+     Render: chrome --headless=new --screenshot --window-size=1600,880 --force-device-scale-factor=1 -->
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1600px; height: 880px; overflow: hidden; }
+  body { font-family: "Segoe UI", system-ui, Arial, sans-serif; background: #f1f5f9; color: #0f172a;
+         padding: 40px; box-sizing: border-box; }
+  h1 { margin: 0 0 6px; font-size: 34px; }
+  p.sub { margin: 0 0 28px; color: #475569; font-size: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .cell { border-radius: 16px; height: 220px; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; gap: 18px; padding: 16px; box-sizing: border-box; }
+  .cell img { max-width: 85%; max-height: 120px; }
+  .cell span { font-size: 16px; opacity: .75; text-align: center; }
+  .white { background: #fff; border: 1px solid #cbd5e1; }
+  .grey  { background: #9ca3af; }
+  .black { background: #111; color: #fff; }
+  .navy  { background: #1e1b4b; color: #fff; }
+</style></head>
+<body>
+  <h1>AlmaShift print logos</h1>
+  <p class="sub">Which file to use on which shirt or mug colour. All files have transparent backgrounds.</p>
+  <div class="grid">
+    <div class="cell white"><img src="almashift-horizontal-color.png"><span>horizontal-color<br>white / light garments, white mugs</span></div>
+    <div class="cell black"><img src="almashift-horizontal-color-on-dark.png"><span>horizontal-color-on-dark<br>black / navy garments</span></div>
+    <div class="cell white"><img src="almashift-horizontal-black.png"><span>horizontal-black<br>one ink, light garments</span></div>
+    <div class="cell black"><img src="almashift-horizontal-white.png"><span>horizontal-white<br>one ink, dark garments</span></div>
+
+    <div class="cell white"><img src="almashift-stacked-color.png"><span>stacked-color</span></div>
+    <div class="cell navy"><img src="almashift-stacked-color-on-dark.png"><span>stacked-color-on-dark</span></div>
+    <div class="cell grey"><img src="almashift-stacked-black.png"><span>stacked-black<br>heather grey</span></div>
+    <div class="cell navy"><img src="almashift-stacked-white.png"><span>stacked-white</span></div>
+
+    <div class="cell white"><img src="almashift-horizontal-indigo.png"><span>horizontal-indigo<br>one ink, brand colour</span></div>
+    <div class="cell white"><img src="almashift-stacked-indigo.png"><span>stacked-indigo</span></div>
+    <div class="cell grey"><img src="almashift-horizontal-white.png"><span>horizontal-white<br>heather grey</span></div>
+    <div class="cell white"><img src="mug-wrap-11oz.png" style="max-height:110px; border:1px solid #e2e8f0"><span>mug-wrap-11oz<br>8.5 × 3.5 in wrap</span></div>
+  </div>
+</body></html>

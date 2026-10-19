@@ -17,6 +17,7 @@ site/
   robots.txt, sitemap.xml
 brand/          logo mark + wordmark (SVG), mark PNGs (32/180/512), og-image.png
                 og-image.html is the source: re-render with headless Chrome at 1200x630
+brand/printables/ T-shirt and mug print files (outlined SVG/PDF, 300 DPI PNG); see its README
 .github/workflows/pages.yml   deploys site/ to GitHub Pages on push to main
 ```
 

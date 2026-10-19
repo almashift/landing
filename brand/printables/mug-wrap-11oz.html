@@ -1,0 +1,16 @@
+<!doctype html>
+<!-- 11 oz mug wrap, 8.5 x 3.5 in (2550x1050 px at 300 DPI), white mug.
+     The logo is printed twice, centred on each half, so it faces out for left- and right-handed drinkers.
+     Render: chrome --headless=new --screenshot --window-size=2550,1050 --force-device-scale-factor=1 -->
+<html><head><meta charset="utf-8">
+<style>
+  @page { size: 8.5in 3.5in; margin: 0; }
+  html, body { margin: 0; width: 8.5in; height: 3.5in; overflow: hidden; background: #fff; }
+  body { display: grid; grid-template-columns: 1fr 1fr; }
+  .side { display: flex; align-items: center; justify-content: center; }
+  .side img, .side svg { width: 3in; height: auto; display: block; }
+</style></head>
+<body>
+  <div class="side"><img src="almashift-horizontal-color.svg" alt="AlmaShift"></div>
+  <div class="side"><img src="almashift-horizontal-color.svg" alt="AlmaShift"></div>
+</body></html>
