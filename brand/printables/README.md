@@ -13,7 +13,9 @@ goes on which colour.
 | Black or navy T-shirt | `almashift-horizontal-color-on-dark` or `almashift-stacked-color-on-dark` |
 | One-colour print (screen print, embroidery), light fabric | `almashift-*-black` or `almashift-*-indigo` |
 | One-colour print, dark fabric | `almashift-*-white` |
-| 11 oz mug, full wrap | `mug-wrap-11oz.pdf` / `.png` (8.5 × 3.5 in, logo on both sides) |
+| 11 oz white mug, full wrap | `mug-wrap-11oz.pdf` / `.png` (8.5 × 3.5 in, logo on both sides) |
+| 11 oz magic mug (black when cold, white when hot) | `mug-wrap-11oz.pdf` / `.png`, the white-mug file: the logo shows on white once the mug heats up |
+| 11 oz black mug, full wrap | `mug-wrap-11oz-black.pdf` / `.png` (same layout, colour-on-dark logo, transparent background: needs UV or DTF printing with white ink, not sublimation) |
 
 Each logo comes as `.svg` and `.pdf` (vector: send these first) and `.png` (300 DPI).
 In the one-colour versions, the symbol's lines are cut out, so the shirt or mug colour shows through.
@@ -41,5 +43,5 @@ proof first: bright indigo tends to print duller in CMYK, so ask for the closest
 
 ## Regenerating
 `make-print-logos.html` builds every variant (text outlined from Segoe UI Black, the font
-of the on-screen wordmark). `mug-wrap-11oz.html` and `preview.html` are the sources of the
-mug wrap and the preview sheet; each file's header comment has its render command.
+of the on-screen wordmark). `mug-wrap-11oz.html`, `mug-wrap-11oz-black.html` and `preview.html` are the sources of the
+mug wraps and the preview sheet; each file's header comment has its render command.
