@@ -267,6 +267,22 @@
       background: var(--brand); color: var(--on-brand);
     }
     .card.featured p { margin-bottom: 16px; }
+    /* Course thumbnail (the YouTube thumbnail design) across the top of the card, edge to edge */
+    .card .card-thumb {
+      display: block; width: calc(100% + 50px); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+      margin: -25px -25px 18px; border-bottom: 1px solid var(--border);
+    }
+    a.card:hover .card-thumb { filter: brightness(1.04); }
+    /* Compact layout under the thumbnail: the thumbnail already says "FREE COURSE", so the pill is only for
+       screen readers; instructor and the call-to-action share one row */
+    .card:has(.card-thumb) .badge {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0;
+    }
+    .card:has(.card-thumb) .card-thumb { margin-bottom: 16px; }
+    .card:has(.card-thumb) p { margin-bottom: 0; font-size: .95rem; }
+    .card-foot { margin-top: auto; padding-top: 14px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .card-foot .instructor { margin-top: 0; padding-top: 0; }
+    .card.featured .card-foot .course-meta { margin-top: 0; }
     /* Course creator: photo in the card's bottom-right corner, fading into the card background,
        with an "Instructor" label and name above the card's link */
     a.card { position: relative; overflow: hidden; isolation: isolate; }
@@ -391,12 +407,16 @@
       <div class="carousel reveal">
         <div class="track" tabindex="0" aria-label="Course list, scroll sideways for more">
           <a class="card featured" href="https://learn.almashift.com/lms/courses/istio-fundamentals">
+            <img class="card-thumb" src="img/istio-fundamentals.jpg" srcset="img/istio-fundamentals.jpg 960w, img/istio-fundamentals@2x.jpg 1280w"
+                 sizes="(max-width: 700px) 90vw, 360px" width="960" height="540" loading="lazy"
+                 alt="Istio Fundamentals course thumbnail with instructor Feroz Shaikh: hands-on labs, in your browser, certificate">
             <span class="badge first">Free</span>
             <h3>Istio Fundamentals</h3>
             <p>Every area of Istio, from installation to troubleshooting, with graded labs that run in your browser. No cloud account needed.</p>
-            <img class="instructor-photo" src="img/feroz.jpg" alt="Photo of instructor Feroz Shaikh" width="320" height="320">
-            <span class="instructor" aria-hidden="true"><small>Instructor</small>Feroz Shaikh</span>
-            <span class="course-meta">Start free <span class="arrow">&rarr;</span></span>
+            <span class="card-foot">
+              <span class="instructor" aria-hidden="true"><small>Instructor</small>Feroz Shaikh</span>
+              <span class="course-meta">Start free <span class="arrow">&rarr;</span></span>
+            </span>
           </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
             <span class="badge">Kubernetes</span>
