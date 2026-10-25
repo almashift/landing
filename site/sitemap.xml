@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- The course page lives on learn.almashift.com, whose own (Frappe) sitemap is empty; listing it here is allowed
+     because the Search Console property is the whole almashift.com domain (all subdomains verified). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.almashift.com/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://learn.almashift.com/lms/courses/istio-fundamentals</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://www.almashift.com/contact.html</loc>
