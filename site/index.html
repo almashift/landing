@@ -55,9 +55,17 @@
         "description": "Every area of Istio, from installation to troubleshooting, with graded labs that run in your browser. No cloud account needed.",
         "url": "https://learn.almashift.com/lms/courses/istio-fundamentals",
         "provider": { "@id": "https://www.almashift.com/#organization" },
+        "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT3H" }
+      },
+      {
+        "@type": "Course",
+        "name": "Istio Introduction",
+        "description": "A free, hands-on start with Istio: why a service mesh, how Istio works, installing it and joining the mesh, with a lab that runs in your browser.",
+        "url": "https://learn.almashift.com/lms/courses/istio-introduction",
+        "provider": { "@id": "https://www.almashift.com/#organization" },
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR", "category": "Free" },
-        "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT3H" }
+        "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT1H" }
       }
     ]
   }
@@ -272,8 +280,9 @@
       display: block; width: calc(100% + 50px); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
       margin: -25px -25px 18px; border-bottom: 1px solid var(--border);
     }
+    .card:not(.featured) .card-thumb { width: calc(100% + 52px); margin: -26px -26px 18px; }
     a.card:hover .card-thumb { filter: brightness(1.04); }
-    /* Compact layout under the thumbnail: the thumbnail already says "FREE COURSE", so the pill is only for
+    /* Compact layout under the thumbnail: the thumbnail already names the course, so the pill is only for
        screen readers; instructor and the call-to-action share one row */
     .card:has(.card-thumb) .badge {
       position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0;
@@ -403,19 +412,31 @@
   <section id="courses" class="courses-band" aria-roledescription="carousel" aria-label="Top courses">
     <div class="wrap">
       <h2 class="reveal">Our top courses</h2>
-      <p class="section-sub reveal">Practical, lab-first courses from expert trainers. Start free with Istio Fundamentals.</p>
+      <p class="section-sub reveal">Practical, lab-first courses from expert trainers. Start free with Istio Introduction.</p>
       <div class="carousel reveal">
         <div class="track" tabindex="0" aria-label="Course list, scroll sideways for more">
-          <a class="card featured" href="https://learn.almashift.com/lms/courses/istio-fundamentals">
+          <a class="card featured" href="https://learn.almashift.com/lms/courses/istio-introduction">
+            <img class="card-thumb" src="img/istio-introduction.jpg" srcset="img/istio-introduction.jpg 960w, img/istio-introduction@2x.jpg 1280w"
+                 sizes="(max-width: 700px) 90vw, 360px" width="960" height="540" loading="lazy"
+                 alt="Istio Introduction free course thumbnail with instructor Feroz Shaikh">
+            <span class="badge first">Free</span>
+            <h3>Istio Introduction</h3>
+            <p>Why a service mesh, how Istio works, installing it and joining the mesh, with a lab that runs in your browser.</p>
+            <span class="card-foot">
+              <span class="instructor" aria-hidden="true"><small>Instructor</small>Feroz Shaikh</span>
+              <span class="course-meta">Start free <span class="arrow">&rarr;</span></span>
+            </span>
+          </a>
+          <a class="card" href="https://learn.almashift.com/lms/courses/istio-fundamentals">
             <img class="card-thumb" src="img/istio-fundamentals.jpg" srcset="img/istio-fundamentals.jpg 960w, img/istio-fundamentals@2x.jpg 1280w"
                  sizes="(max-width: 700px) 90vw, 360px" width="960" height="540" loading="lazy"
                  alt="Istio Fundamentals course thumbnail with instructor Feroz Shaikh: hands-on labs, in your browser, certificate">
-            <span class="badge first">Free</span>
+            <span class="badge">Istio</span>
             <h3>Istio Fundamentals</h3>
             <p>Every area of Istio, from installation to troubleshooting, with graded labs that run in your browser. No cloud account needed.</p>
             <span class="card-foot">
               <span class="instructor" aria-hidden="true"><small>Instructor</small>Feroz Shaikh</span>
-              <span class="course-meta">Start free <span class="arrow">&rarr;</span></span>
+              <span class="course-meta">View course <span class="arrow">&rarr;</span></span>
             </span>
           </a>
           <a class="card" href="https://learn.almashift.com/lms/courses">
